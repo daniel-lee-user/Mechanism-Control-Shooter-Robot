@@ -7,6 +7,8 @@
 
 #include "runLeftMotor.h"
 #include "../Robot.h"
+#include "../Utilities/NetworkTables.h"
+
 
 runLeftMotor::runLeftMotor() {
 	// Use Requires() here to declare subsystem dependencies

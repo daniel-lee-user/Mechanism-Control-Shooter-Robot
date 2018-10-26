@@ -9,13 +9,13 @@
 #include "WPILib.h"
 #include <WPILib.h>
 #include "Robot.h"
-#include "Commands/shoot.h"
+#include "Commands/moveForwardShoot.h"
 #include "Commands/runLeftRightMotors.h"
 #include "Commands/TankDrive.h"
 
 OI::OI(): rightMotorStick(new Joystick(1)),leftMotorStick(new Joystick(0)), shooterButton(new JoystickButton(leftMotorStick, 0)), runLeftRight(new JoystickButton(rightMotorStick, 1)) {
 	// Process operator interface input here.
-	shooterButton ->WhenPressed(new shoot(0.2));
+	shooterButton ->WhenPressed(new moveForwardShoot(0.2));
 	runLeftRight ->WhenPressed(new runLeftRightMotors());
 	runLeftRight ->WhenReleased(new TankDrive());
 

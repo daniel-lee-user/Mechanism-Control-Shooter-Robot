@@ -5,40 +5,43 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "shoot.h"
+#include "moveForward.h"
 #include "../Robot.h"
-#include <iostream>
+#include "../Utilities/NetworkTables.h"
 
-shoot::shoot(double shootSpeed) {
+moveForward::moveForward() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
-	Requires(Robot::s_subsystem);
-	shootSpeedInput = shootSpeed;
+	Requires(Robot::t_subsystem);
 }
 
 // Called just before this Command runs the first time
-void shoot::Initialize() {
+void moveForward::Initialize() {
 	SetTimeout(5); //set five second timeout
 }
 
 // Called repeatedly when this Command is scheduled to run
-void shoot::Execute() {
-	Robot::s_subsystem->shooterSpeed(shootSpeedInput);
-	std::cout << Robot::s_subsystem->getSpeed() << std::endl;
+void moveForward::Execute() {
+	Robot::t_subsystem->tankDrive(0.2, 0.2);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool shoot::IsFinished() {
-	return IsTimedOut();
+bool moveForward::IsFinished() {
+	if(NetworkTables::getDistanceCV >= 10) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 // Called once after isFinished returns true
-void shoot::End() {
-    Robot::s_subsystem->shooterSpeed(0);  // stop moving
+void moveForward::End() {
+    Robot::t_subsystem->tankDrive(0,0);  // stop moving
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void shoot::Interrupted() {
+void moveForward::Interrupted() {
 	End();
 }
