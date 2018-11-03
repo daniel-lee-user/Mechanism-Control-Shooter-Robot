@@ -11,6 +11,9 @@
 
 class runLeftRightMotors : public frc::CommandGroup {
 public:
-	runLeftRightMotors();
+	runLeftRightMotors(double iRspeed, double iLSpeed);
+private:
+	double leftSpeed;
+	double rightSpeed;
 };
 

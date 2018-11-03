@@ -8,6 +8,7 @@
 #include "shoot.h"
 #include "../Robot.h"
 #include <iostream>
+#include "WVPIDController.h"
 
 shoot::shoot(double shootSpeed) {
 	// Use Requires() here to declare subsystem dependencies
@@ -40,5 +41,5 @@ void shoot::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void shoot::Interrupted() {
-	End();
+
 }

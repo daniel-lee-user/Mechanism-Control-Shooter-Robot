@@ -11,11 +11,13 @@
 
 class runRightMotor : public frc::Command {
 public:
-	runRightMotor();
+	runRightMotor(double riSpeed);
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;
 	void End() override;
 	void Interrupted() override;
+private:
+	double tempSpeed;
 };
 

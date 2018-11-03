@@ -10,9 +10,10 @@
 #include "../Utilities/NetworkTables.h"
 
 
-runLeftMotor::runLeftMotor() {
+runLeftMotor::runLeftMotor(double leSpeed) {
 	// Use Requires() here to declare subsystem dependencies
 	Requires(Robot::t_subsystem);
+	tempSpeed = leSpeed;
 
 }
 
@@ -23,7 +24,7 @@ void runLeftMotor::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void runLeftMotor::Execute() {
-	Robot::t_subsystem->setLeftSpeed(0.2);
+	Robot::t_subsystem->setLeftSpeed(tempSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -39,5 +40,5 @@ void runLeftMotor::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void runLeftMotor::Interrupted() {
-	End();
+
 }

@@ -31,3 +31,11 @@ void TankDriveSubsystem::setRightSpeed(double rSpeed) {
 void TankDriveSubsystem::setLeftSpeed(double lSpeed) {
 	left->Set(ControlMode::PercentOutput, lSpeed);
 }
+TankDriveSubsystem::~TankDriveSubsystem() {
+	if (left!= nullptr) {
+		delete left;
+	}
+	if(right != nullptr) {
+		delete right;
+	}
+}

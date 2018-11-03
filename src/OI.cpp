@@ -11,14 +11,13 @@
 #include "Robot.h"
 #include "Commands/moveForwardShoot.h"
 #include "Commands/runLeftRightMotors.h"
+#include "Commands/ExampleCommand.h"
 #include "Commands/TankDrive.h"
 
-OI::OI(): rightMotorStick(new Joystick(1)),leftMotorStick(new Joystick(0)), shooterButton(new JoystickButton(leftMotorStick, 0)), runLeftRight(new JoystickButton(rightMotorStick, 1)) {
+OI::OI(): rightMotorStick(new Joystick(1)), leftMotorStick(new Joystick(0)), shooterButton(new JoystickButton(leftMotorStick, 1)), runLeftRight(new JoystickButton(rightMotorStick, 1)) {
 	// Process operator interface input here.
-	shooterButton ->WhenPressed(new moveForwardShoot(0.2));
-	runLeftRight ->WhenPressed(new runLeftRightMotors());
-	runLeftRight ->WhenReleased(new TankDrive());
-
+	//shooterButton ->WhenPressed(new moveForwardShoot(0.2));
+	runLeftRight ->WhenPressed(new runLeftRightMotors(-0.5, 0.5));
 }
 
 Joystick* OI::getRightMotorStick() {

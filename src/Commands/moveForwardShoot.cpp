@@ -8,8 +8,10 @@
 #include "moveForwardShoot.h"
 #include "shoot.h"
 #include "moveForward.h"
+#include <iostream>
 
 moveForwardShoot::moveForwardShoot(double shootSpeed) {
+	std::cout << "running" << std::endl;
 	AddSequential(new moveForward());
 	AddSequential(new shoot(shootSpeed));
 	// Add Commands here:

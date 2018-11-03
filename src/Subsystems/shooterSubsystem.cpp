@@ -7,7 +7,7 @@
 
 #include "shooterSubsystem.h"
 #include "../RobotMap.h"
-#include "../Commands/shoot.h"
+#include "../Commands/ExampleCommand.h"
 
 shooterSubsystem::shooterSubsystem() : Subsystem("ShooterSubsystem"), shooterMotor(new TalonSRX(kShooterMotor)) {
 	shooterMotor->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative,0,10);
@@ -16,7 +16,7 @@ shooterSubsystem::shooterSubsystem() : Subsystem("ShooterSubsystem"), shooterMot
 
 void shooterSubsystem::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new shoot());
+	SetDefaultCommand(new ExampleCommand());
 }
 
 // Put methods for controlling this subsystem

@@ -22,6 +22,7 @@ private:
 
 public:
 	TankDriveSubsystem();
+	~TankDriveSubsystem();
 	void InitDefaultCommand() override;
 	void tankDrive(double leftSpeed, double rightSpeed);
 	void setRightSpeed(double rSpeed);

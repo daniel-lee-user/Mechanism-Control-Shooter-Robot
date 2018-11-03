@@ -8,11 +8,15 @@
 #include "runLeftRightMotors.h"
 #include "runRightMotor.h"
 #include "runLeftMotor.h"
+#include <iostream>
 
 
-runLeftRightMotors::runLeftRightMotors() {
-	AddParallel(new runRightMotor());
-	AddParallel(new runLeftMotor());
+runLeftRightMotors::runLeftRightMotors(double iRSpeed, double iLSpeed) {
+	std::cout << "running" << std::endl;
+	leftSpeed = iLSpeed;
+	rightSpeed = iRSpeed;
+	AddParallel(new runRightMotor(rightSpeed));
+	AddParallel(new runLeftMotor(leftSpeed));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

@@ -8,10 +8,11 @@
 #include "runRightMotor.h"
 #include "../Robot.h"
 
-runRightMotor::runRightMotor() {
+runRightMotor::runRightMotor(double riSpeed) {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	Requires(Robot::t_subsystem);
+	tempSpeed = riSpeed;
 
 }
 
@@ -22,7 +23,7 @@ void runRightMotor::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void runRightMotor::Execute() {
-	Robot::t_subsystem->setRightSpeed(0.2);
+	Robot::t_subsystem->setRightSpeed(tempSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -38,5 +39,5 @@ void runRightMotor::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void runRightMotor::Interrupted() {
-	End();
+
 }
